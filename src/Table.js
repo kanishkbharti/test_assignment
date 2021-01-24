@@ -4,6 +4,8 @@ import { TableHeader, Pagination, Search } from "./Common";
 import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import StarIcon from "@material-ui/icons/Star";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -103,6 +105,19 @@ const DataTable = ({ cartItems, onAdd }) => {
     return name;
   };
 
+  const star = (rating) => {
+    let score = Math.round(rating);
+
+    let starShow = [];
+    for (let i = 0; i < score; i++) {
+      starShow.push(<StarIcon />);
+    }
+    for (let i = 0; i < 5 - score; i++) {
+      starShow.push(<StarBorderIcon />);
+    }
+    return starShow;
+  };
+
   return (
     <>
       <div className="row w-100">
@@ -148,7 +163,7 @@ const DataTable = ({ cartItems, onAdd }) => {
                     <tr key={r["title"]}>
                       <td className={classes.textStyle}>{cut(r["title"])}</td>
                       <td>{r["authors"]}</td>
-                      <td>{r["average_rating"]}</td>
+                      <td>{star(r["average_rating"])}</td>
                       <td>{r["price"]}</td>
                       <td>
                         <button
