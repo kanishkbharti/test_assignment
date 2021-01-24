@@ -8,11 +8,11 @@ import Basket from "./Basket";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.title === product.title);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.title === product.title ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
@@ -20,13 +20,13 @@ function App() {
     }
   };
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.title === product.title);
     if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
+      setCartItems(cartItems.filter((x) => x.title !== product.title));
     } else {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+          x.title === product.title ? { ...exist, qty: exist.qty - 1 } : x
         )
       );
     }
