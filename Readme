@@ -1,0 +1,1 @@
+This app contains feature slike sorting, searching and pagination. Also forvisualization pie chart is used. Click on column to sort it accordingly. Except visualize  column all other columns are sortable. Material UI and bootstrap is used for css and chart.js is used for pie chart. Dialog is used to display pie chart.
